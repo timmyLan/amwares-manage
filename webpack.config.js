@@ -4,7 +4,7 @@ var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 module.exports = {
     devtool: 'eval',
     entry: {
-        page1: ['./public/app/index', hotMiddlewareScript]
+        page1: ['./public/app/app', hotMiddlewareScript]
     },
     output: {
         path: path.join(__dirname, 'dist'),
