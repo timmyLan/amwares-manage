@@ -2,7 +2,7 @@
  * In this file, we create a React component
  * which incorporates components providedby material-ui.
  */
-
+'use strict';
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';

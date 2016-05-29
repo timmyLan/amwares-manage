@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "react-webpack-template",
   "scripts": {
-    "start": "node server.js",
+    "start": "supervisor start server.js",
     "lint": "eslint src && echo \"eslint: no lint errors\""
   },
   "devDependencies": {
@@ -34,18 +34,20 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "fbjs": "^0.8.3",
+    "hbs": "^4.0.0",
     "immutable": "^3.8.1",
     "lodash": "^4.13.1",
+    "material-ui": "^0.15.0",
+    "mongorito": "^2.1.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-immutable-render-mixin": "^0.9.6",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
+    "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.2",
     "redux-devtools": "^3.3.1",
-    "redux-thunk": "^2.1.0",
-    "material-ui": "^0.15.0",
-    "react-tap-event-plugin": "^1.0.0"
+    "redux-thunk": "^2.1.0"
   },
   "main": "server.js",
   "author": "llan",

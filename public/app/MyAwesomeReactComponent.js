@@ -1,6 +1,7 @@
 /**
  * Created by llan on 2016/5/27.
  */
+'use strict';
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Popover from 'material-ui/Popover';
@@ -38,7 +39,7 @@ export default class PopoverExampleSimple extends React.Component {
             <div>
                 <RaisedButton
                     onTouchTap={this.handleTouchTap}
-                    label="Click me"
+                    label="click me"
                 />
                 <Popover
                     open={this.state.open}

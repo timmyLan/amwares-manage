@@ -1,6 +1,8 @@
 /**
  * Created by llan on 2016/5/27.
  */
+
+'use strict';
 import React from 'react';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
