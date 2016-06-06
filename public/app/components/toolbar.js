@@ -15,20 +15,11 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
 
 export default class ToolbarExamplesSimple extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 3,
-    };
-  }
-
-  handleChange = (event, index, value) => this.setState({value});
-
   render() {
     return (
       <Toolbar>
         <ToolbarGroup firstChild={true}>
-          <DropDownMenu value={this.state.value} onChange={this.handleChange}>
+          <DropDownMenu value={this.props.value} onChange={this.props.actions.change}>
             <MenuItem value={1} primaryText="All Broadcasts" />
             <MenuItem value={2} primaryText="All Voice" />
             <MenuItem value={3} primaryText="All Text" />
