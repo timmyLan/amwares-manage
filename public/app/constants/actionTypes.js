@@ -1,5 +1,6 @@
 import keyMirror from 'fbjs/lib/keyMirror'
 
 export default keyMirror({
-    CHANGE : null
+    TITLE_CHANGE : null,
+    TABLE_DATA_CHANGE : null
 })

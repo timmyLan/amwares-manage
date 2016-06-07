@@ -1,9 +1,14 @@
-import {CHANGE} from '../constants/actionTypes'
+import {TITLE_CHANGE , TABLE_DATA_CHANGE} from '../constants/actionTypes'
 
-
-export function change(event, index, value) {
+export function titleChange(title) {
     return {
-        type: CHANGE,
-        value
+        type: TITLE_CHANGE,
+        title
+    }
+}
+
+export function tableDataChange() {
+    return {
+        type: TABLE_DATA_CHANGE
     }
 }

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import changeState from './toolbar'
+import title from './title'
+import tableData from './table'
 
 const rootReducer = combineReducers({
-    value : changeState
+    appBarTitle : title,
+    tableData : tableData
 });
 
 export default rootReducer

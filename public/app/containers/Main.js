@@ -9,8 +9,8 @@ import {deepOrange500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 /*components*/
-import MyTable from '../components/table';
-import MyToolbar from '../components/toolbar';
+import BaseTable from '../components/table';
+import MyAppBar from '../components/appBar';
 /*redux*/
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -23,16 +23,23 @@ const styles = {
 
 const muiTheme = getMuiTheme({
   palette: {
-    accent1Color: deepOrange500,
-  },
+    accent1Color: deepOrange500
+  }
 });
 
 class Main extends React.Component {
   render() {
+      var MyTable;
+      if (this.props.tableData.length > 0) {
+          MyTable = <BaseTable {...this.props}/>;
+      } else {
+          MyTable = <div></div>;
+      }
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={styles.container}>
-          <MyToolbar {...this.props}/>
+          <MyAppBar {...this.props}/>
+            {MyTable}
         </div>
       </MuiThemeProvider>
     );
@@ -40,7 +47,8 @@ class Main extends React.Component {
 }
 
 export default connect(state => ({
-    value:state.value
+    appBarTitle:state.appBarTitle,
+    tableData: state.tableData
 }), dispatch => ({
     actions: bindActionCreators(ItemsActions, dispatch)
 }))(Main)

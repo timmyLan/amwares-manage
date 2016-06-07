@@ -8,7 +8,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux'
 import configureStore from './configureStore'
 injectTapEventPlugin();
-const store = configureStore()
+const store = configureStore();
 const App = () => (
     <MuiThemeProvider muiTheme={getMuiTheme()}>
         <Provider store={store}>
