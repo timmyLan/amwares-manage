@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux'
 import title from './title'
-import tableData from './table'
+import {tableData,tableType} from './table'
 
 const rootReducer = combineReducers({
     appBarTitle : title,
-    tableData : tableData
+    tableData : tableData,
+    tableType : tableType
 });
 
 export default rootReducer

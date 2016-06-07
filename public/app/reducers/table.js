@@ -1,50 +1,54 @@
 /**
  * Created by llan on 2016/6/7.
  */
-import {TABLE_DATA_CHANGE} from '../constants/actionTypes'
+import {TABLE_TYPE_CHANGE , TEACHER_TABLE_DATA_CHANGE, CHILDREN_TABLE_DATA_CHANGE , PERSON_TABLE_DATA_CHANGE }
+    from '../constants/actionTypes'
 
 const initialState = [
     {
         name: 'John Smith',
-        status: 'Employed',
-        selected: true
+        status: 'Employed'
     },
     {
         name: 'Randal White',
         status: 'Unemployed'
-    },
-    {
-        name: 'Stephanie Sanders',
-        status: 'Employed',
-        selected: true
-    },
-    {
-        name: 'Steve Brown',
-        status: 'Employed'
-    },
-    {
-        name: 'Joyce Whitten',
-        status: 'Employed'
-    },
-    {
-        name: 'Samuel Roberts',
-        status: 'Employed'
-    },
-    {
-        name: 'Adam Moore',
-        status: 'Employed'
     }
 ];
 
-export default function tableData(state = initialState,action) {
+const initialTableType = '';
+
+export function tableData(state = initialState,action) {
     switch(action.type) {
-        case TABLE_DATA_CHANGE:
+        case CHILDREN_TABLE_DATA_CHANGE:
             return [
                 {
-                    name: 'Adam Moore',
+                    name: 'Children',
                     status: 'Employed'
                 }
             ];
+        case TEACHER_TABLE_DATA_CHANGE:
+            return [
+                {
+                    name: 'Teacher',
+                    status: 'Employed'
+                }
+            ];
+        case PERSON_TABLE_DATA_CHANGE:
+            return [
+                {
+                    name: 'Person',
+                    status: 'Employed'
+                }
+            ];
+        default:
+            return state;
+    }
+}
+
+export function tableType(state = initialTableType,action) {
+    switch(action.type) {
+        case TABLE_TYPE_CHANGE:
+            return action.title;
         default:
             return state;
     }

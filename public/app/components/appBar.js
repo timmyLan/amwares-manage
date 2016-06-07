@@ -12,9 +12,15 @@ import {grey50} from 'material-ui/styles/colors';
 export default class AppBarExampleIconMenu extends React.Component {
     handleClick(e) {
         let title = e.target.innerHTML;
+        if(title == 'Person'){
+            this.props.actions.personTableDataChange();
+        }else if(title == 'Children'){
+            this.props.actions.childrenTableDataChange();
+        }else{
+            this.props.actions.teacherTableDataChange();
+        }
         this.props.actions.titleChange(title);
-        console.log('actions',this.props.actions)
-        this.props.actions.tableDataChange();
+        this.props.actions.tableTypeChange(title);
     }
     render() {
         return (
@@ -26,11 +32,9 @@ export default class AppBarExampleIconMenu extends React.Component {
                       anchorOrigin={{horizontal: 'left', vertical: 'top'}}
                       targetOrigin={{horizontal: 'left', vertical: 'top'}}
                     >
-                      <MenuItem primaryText="Refresh" onClick={(e) => this.handleClick(e)}/>
-                      <MenuItem primaryText="Send feedback" onClick={(e) => this.handleClick(e)}/>
-                      <MenuItem primaryText="Settings" onClick={(e) => this.handleClick(e)}/>
-                      <MenuItem primaryText="Help" onClick={(e) => this.handleClick(e)}/>
-                      <MenuItem primaryText="Sign out" onClick={(e) => this.handleClick(e)}/>
+                      <MenuItem primaryText="Person" onClick={(e) => this.handleClick(e)}/>
+                      <MenuItem primaryText="Children" onClick={(e) => this.handleClick(e)}/>
+                      <MenuItem primaryText="Teacher" onClick={(e) => this.handleClick(e)}/>
                  </IconMenu>
                 }
             />

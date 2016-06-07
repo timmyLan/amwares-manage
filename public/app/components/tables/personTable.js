@@ -5,7 +5,7 @@ import React from 'react';
 import {TableHeaderColumn, TableRow,TableRowColumn}
     from 'material-ui/Table';
 import FlatButton from 'material-ui/FlatButton';
-export class TableHeaderColumn1 extends React.Component {
+export class PersonTableHeaderColumn extends React.Component {
     render() {
         return (
             <TableRow>
@@ -18,7 +18,7 @@ export class TableHeaderColumn1 extends React.Component {
     }
 }
 
-export const tableDataMap = tableData =>(
+export const PersonTableDataMap = tableData =>(
     tableData.map((row, index) => (
             <TableRow key={index}>
                 <TableRowColumn >{index}</TableRowColumn>

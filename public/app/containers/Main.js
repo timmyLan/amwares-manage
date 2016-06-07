@@ -48,7 +48,8 @@ class Main extends React.Component {
 
 export default connect(state => ({
     appBarTitle:state.appBarTitle,
-    tableData: state.tableData
+    tableData: state.tableData,
+    tableType: state.tableType
 }), dispatch => ({
     actions: bindActionCreators(ItemsActions, dispatch)
 }))(Main)
