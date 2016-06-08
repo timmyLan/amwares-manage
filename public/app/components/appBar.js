@@ -8,8 +8,19 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton/IconButton';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import {grey50} from 'material-ui/styles/colors';
-import FlatButton from 'material-ui/FlatButton';
+import FontIcon from 'material-ui/FontIcon';
+import {Link} from 'react-router';
 
+const styles = {
+    iconStyles: {
+        margin: '12px 14px',
+        color:'rgb(250, 250, 250)'
+    },
+    linkStyle: {
+        textDecoration: 'none',
+        display: 'block'
+    }
+};
 export default class AppBarExampleIconMenu extends React.Component {
     handleClick(e) {
         let title = e.target.innerHTML;
@@ -38,7 +49,11 @@ export default class AppBarExampleIconMenu extends React.Component {
                       <MenuItem primaryText="Teacher" onClick={(e) => this.handleClick(e)}/>
                  </IconMenu>
                 }
-                iconElementRight={this.props.appBarTitle.title ? <FlatButton label="添加" /> : <span></span>}
+                iconElementRight={this.props.appBarTitle.title ? <FontIcon className="material-icons" style={styles.iconStyles}>
+                    <Link
+                        style={styles.linkStyle} to="/create" target="_brank">add_circle_outline
+                    </Link>
+                </FontIcon> : <span></span>}
             />
         )
     }

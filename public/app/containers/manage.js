@@ -22,21 +22,14 @@ const styles = {
     }
 };
 
-const muiTheme = getMuiTheme({
-    palette: {
-        accent1Color: deepOrange500
-    }
-});
-
 class Main extends React.Component {
     render() {
         return (
-            <MuiThemeProvider muiTheme={muiTheme}>
-                <div style={styles.container}>
-                    <MyAppBar style={styles.app_bar} {...this.props}/>
-                    <BaseTable {...this.props}/>
-                </div>
-            </MuiThemeProvider>
+            <div style={styles.container}>
+                <MyAppBar style={styles.app_bar} {...this.props}/>
+                <BaseTable {...this.props}/>
+                {this.props.children}
+            </div>
         );
     }
 }

@@ -3,6 +3,7 @@ var express = require('express');
 var webpack = require('webpack');
 var config = require('./webpack.config');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 var app = express();
 var compiler = webpack(config);
 
@@ -19,6 +20,10 @@ app.use(require('webpack-hot-middleware')(compiler));
 
 /*public*/
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 /*views*/
 app.set('views', path.join(__dirname, 'views'));
