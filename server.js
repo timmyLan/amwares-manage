@@ -17,6 +17,9 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
+/*public*/
+app.use(express.static(path.join(__dirname, 'public')));
+
 /*views*/
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

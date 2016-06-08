@@ -12,42 +12,36 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import BaseTable from '../components/table';
 import MyAppBar from '../components/appBar';
 /*redux*/
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 import * as ItemsActions from '../actions'
 const styles = {
-  container: {
-    textAlign: 'center'
-  }
+    container: {
+        textAlign: 'center'
+    }
 };
 
 const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: deepOrange500
-  }
+    palette: {
+        accent1Color: deepOrange500
+    }
 });
 
 class Main extends React.Component {
-  render() {
-      var MyTable;
-      if (this.props.tableData.length > 0) {
-          MyTable = <BaseTable {...this.props}/>;
-      } else {
-          MyTable = <div></div>;
-      }
-    return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={styles.container}>
-          <MyAppBar {...this.props}/>
-            {MyTable}
-        </div>
-      </MuiThemeProvider>
-    );
-  }
+    render() {
+        return (
+            <MuiThemeProvider muiTheme={muiTheme}>
+                <div style={styles.container}>
+                    <MyAppBar style={styles.app_bar} {...this.props}/>
+                    <BaseTable {...this.props}/>
+                </div>
+            </MuiThemeProvider>
+        );
+    }
 }
 
 export default connect(state => ({
-    appBarTitle:state.appBarTitle,
+    appBarTitle: state.appBarTitle,
     tableData: state.tableData,
     tableType: state.tableType
 }), dispatch => ({

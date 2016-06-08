@@ -4,7 +4,7 @@
 import {TITLE_CHANGE} from '../constants/actionTypes'
 
 const initialState ={
-    title : 'Amwares'
+    title : ''
 };
 
 export default function title(state = initialState, action) {
