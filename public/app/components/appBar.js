@@ -8,6 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton/IconButton';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import {grey50} from 'material-ui/styles/colors';
+import FlatButton from 'material-ui/FlatButton';
 
 export default class AppBarExampleIconMenu extends React.Component {
     handleClick(e) {
@@ -37,6 +38,7 @@ export default class AppBarExampleIconMenu extends React.Component {
                       <MenuItem primaryText="Teacher" onClick={(e) => this.handleClick(e)}/>
                  </IconMenu>
                 }
+                iconElementRight={this.props.appBarTitle.title ? <FlatButton label="添加" /> : <span></span>}
             />
         )
     }

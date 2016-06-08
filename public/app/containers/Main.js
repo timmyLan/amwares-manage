@@ -15,6 +15,7 @@ import MyAppBar from '../components/appBar';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as ItemsActions from '../actions'
+
 const styles = {
     container: {
         textAlign: 'center'
