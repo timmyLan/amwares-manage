@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 module.exports = {
-    devtool: 'eval',
+    devtool: "source-map",
     entry: {
         'index': ['./public/app/app', hotMiddlewareScript]
     },
@@ -25,7 +25,7 @@ module.exports = {
             loader: 'url?limit=8192&context=client&name=[path][name].[ext]'
         }, {
             test: /\.scss$/,
-            loader: 'style!css?sourceMap!resolve-url!sass?sourceMap'
+            loaders: ["style", "css?sourceMap", "sass?sourceMap"]
         }]
-    },
+    }
 };

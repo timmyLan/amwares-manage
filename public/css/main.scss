@@ -1,10 +1,9 @@
+@import "google_icon.css";
+
 a{
   text-decoration: none;
   display: inline-block;
   &:visited{
-    color: #fff;
+    color: rgba(0, 0, 0, 0.4);
   }
-}
-body{
-  background-color: #2e2e2e;
 }
