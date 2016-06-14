@@ -8,7 +8,7 @@ import ChildrenTable from '../components/children/childrenTable'
 /*redux*/
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import * as ItemsActions from '../actions'
+import * as ItemsActions from '../actions/children'
 
 const styles = {
     container: {
@@ -26,9 +26,9 @@ class Children extends React.Component {
     }
 }
 
-export default connect(state => ({
-    dialogInfoState: state.dialogInfoState,
-    dialogWarningState: state.dialogWarningState
+export default connect((state) => ({
+    infoDialogState: state.children.infoDialogState,
+    warningDialogState: state.children.warningDialogState
 }), dispatch => ({
     actions: bindActionCreators(ItemsActions, dispatch)
 }))(Children)

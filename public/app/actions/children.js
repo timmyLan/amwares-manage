@@ -1,4 +1,7 @@
-import {INFO_CLOSE,INFO_OPEN,WARNING_CLOSE,WARNING_OPEN}
+/**
+ * Created by llan on 2016/6/14.
+ */
+import {INFO_CLOSE,INFO_OPEN,WARNING_CLOSE,WARNING_OPEN,INFO_TITLE}
     from '../constants/actionTypes'
 export function infoOpen(row) {
     return {
@@ -23,5 +26,12 @@ export function warningOpen(row) {
     return {
         type: WARNING_OPEN,
         row
+    }
+}
+
+export function changeTitle(title){
+    return {
+        type: INFO_TITLE,
+        title
     }
 }

@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux'
-import dialogInfoState from './info'
-import dialogWarningState from './warning'
+import children from './children'
 
 const rootReducer = combineReducers({
-    dialogInfoState : dialogInfoState,
-    dialogWarningState　: dialogWarningState
+        children : children
 });
 
 export default rootReducer

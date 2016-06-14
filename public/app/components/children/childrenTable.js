@@ -6,8 +6,8 @@ import {Table, TableBody, TableHeader,TableHeaderColumn, TableRow,TableRowColumn
 import AppBar from 'material-ui/AppBar';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
-import InfoDialog from './dialog';
-import WarningDialog from './warning';
+import InfoDialog from './infoDialog';
+import WarningDialog from './warningDioaog';
 const styles ={
     tableColumn :{
         textAlign:'center'
@@ -20,7 +20,7 @@ const tableData = [
     },
     {
         name: 'Randal White',
-        age: '11'
+        age: '14'
     }
 ];
 export default class ChildrenTable extends React.Component {
@@ -33,6 +33,7 @@ export default class ChildrenTable extends React.Component {
                 <TableRowColumn style={styles.tableColumn}>
                     <IconButton onTouchTap = {() => {
                             this.props.actions.infoOpen(row);
+                            this.props.actions.changeTitle('Edit');
                         }}>
                         <FontIcon className="material-icons">
                             mode_edit
@@ -54,7 +55,10 @@ export default class ChildrenTable extends React.Component {
                     title='Children'
                     iconElementLeft={<span></span>}
                     iconElementRight={
-                        <IconButton tooltip="Create">
+                        <IconButton tooltip="Create" onTouchTap = {() => {
+                            this.props.actions.infoOpen();
+                            this.props.actions.changeTitle('Create');
+                        }}>
                             <FontIcon className="material-icons">
                                 add
                             </FontIcon>
@@ -70,7 +74,7 @@ export default class ChildrenTable extends React.Component {
                         <TableRow>
                             <TableHeaderColumn style={styles.tableColumn} tooltip="The ID">#</TableHeaderColumn>
                             <TableHeaderColumn style={styles.tableColumn} tooltip="The Name">Name</TableHeaderColumn>
-                            <TableHeaderColumn style={styles.tableColumn} tooltip="The Children">Age</TableHeaderColumn>
+                            <TableHeaderColumn style={styles.tableColumn} tooltip="The Age">Age</TableHeaderColumn>
                             <TableHeaderColumn style={styles.tableColumn} tooltip="The Operate">Operate</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>

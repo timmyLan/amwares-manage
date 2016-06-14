@@ -27,20 +27,20 @@ export default class InfoDialog extends React.Component {
         return (
             <div>
                 <Dialog
-                    title="Edit"
+                    title={this.props.infoDialogState.title}
                     actions={actions}
                     modal={true}
                     contentStyle={customContentStyle}
-                    open={this.props.dialogInfoState.open}
+                    open={this.props.infoDialogState.open}
                 >
                 <TextField
                     hintText="Name"
-                    defaultValue={this.props.dialogInfoState.row.name}
+                    defaultValue={this.props.infoDialogState.row ? this.props.infoDialogState.row.name : ''}
                     fullWidth={true}
                 /><br />
                 <TextField
                     hintText="Age"
-                    defaultValue={this.props.dialogInfoState.row.age}
+                    defaultValue={this.props.infoDialogState.row ? this.props.infoDialogState.row.age : ''}
                     fullWidth={true}
                 />
                 </Dialog>

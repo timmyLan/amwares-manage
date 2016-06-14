@@ -1,14 +1,14 @@
 /**
  * Created by llan on 2016/6/14.
  */
-import {WARNING_OPEN,WARNING_CLOSE} from '../constants/actionTypes'
+import {WARNING_OPEN,WARNING_CLOSE} from '../../constants/actionTypes'
 
 const initialState =  {
     open : false,
     row : {}
 };
 
-export default function dialogWarningState(state = initialState, action) {
+export default function warningDialogState(state = initialState, action) {
     switch(action.type) {
         case WARNING_OPEN:
             return {...state , open : true ,row: action.row};

@@ -5,7 +5,7 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
-export default class DialogWarnning extends React.Component {
+export default class WarnningDialog extends React.Component {
     render(){
         let handleClose = () => this.props.actions.warningClose();
         const actions = [
@@ -22,10 +22,10 @@ export default class DialogWarnning extends React.Component {
         ];
         return(
             <Dialog
-                title="Dialog With Actions"
+                title="Delete"
                 actions={actions}
                 modal={false}
-                open={this.props.dialogWarningState.open}
+                open={this.props.warningDialogState.open}
                 onRequestClose={handleClose}
             >
                 Are you want to delete this?
