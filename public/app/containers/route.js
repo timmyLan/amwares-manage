@@ -8,16 +8,13 @@ import { Router, Route, IndexRoute , hashHistory } from 'react-router';
 
 import App from './App';
 import Home from './Home';
-import Manage from './Manage';
-import Create from './Create';
-
+import Children from './Children';
 
 const route = (
     <Router history={hashHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Home} />
-            <Route path="manage" component={Manage} />
-            <Route path="create" component={Create} />
+            <Route path="children" component={Children} />
         </Route>
     </Router>
 );

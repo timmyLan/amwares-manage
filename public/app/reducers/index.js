@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux'
-import title from './title'
-import {tableData,tableType} from './table'
+import dialogInfoState from './info'
+import dialogWarningState from './warning'
 
 const rootReducer = combineReducers({
-    appBarTitle : title,
-    tableData : tableData,
-    tableType : tableType
+    dialogInfoState : dialogInfoState,
+    dialogWarningState　: dialogWarningState
 });
 
 export default rootReducer

@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 module.exports = {
-    devtool: "source-map",
+    devtool: 'eval',
     entry: {
         'index': ['./public/app/app', hotMiddlewareScript]
     },

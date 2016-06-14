@@ -39,6 +39,7 @@ mongoose.connect('localhost','report', function (error) {
 app.use('/', index);
 app.use('/user', user);
 
+
 app.listen(3000, 'localhost', function(err) {
     if (err) {
         console.log(err);

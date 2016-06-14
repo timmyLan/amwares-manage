@@ -1,34 +1,27 @@
-import {TITLE_CHANGE , TABLE_TYPE_CHANGE , TEACHER_TABLE_DATA_CHANGE, CHILDREN_TABLE_DATA_CHANGE , PERSON_TABLE_DATA_CHANGE}
+import {INFO_CLOSE,INFO_OPEN,WARNING_CLOSE,WARNING_OPEN}
     from '../constants/actionTypes'
-
-export function titleChange(title) {
+export function infoOpen(row) {
     return {
-        type: TITLE_CHANGE,
-        title
+        type: INFO_OPEN,
+        row
     }
 }
 
-export function tableTypeChange(title) {
+export function infoClose() {
     return {
-        type: TABLE_TYPE_CHANGE,
-        title
+        type: INFO_CLOSE
     }
 }
 
-export function teacherTableDataChange() {
+export function warningClose() {
     return {
-        type: TEACHER_TABLE_DATA_CHANGE
+        type: WARNING_CLOSE
     }
 }
 
-export function childrenTableDataChange() {
+export function warningOpen(row) {
     return {
-        type: CHILDREN_TABLE_DATA_CHANGE
-    }
-}
-
-export function personTableDataChange() {
-    return {
-        type: PERSON_TABLE_DATA_CHANGE
+        type: WARNING_OPEN,
+        row
     }
 }

@@ -8,14 +8,9 @@ import FontIcon from 'material-ui/FontIcon';
 import MenuItem from 'material-ui/MenuItem';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import {Link} from 'react-router';
-
 const styles = {
     iconStyles: {
         marginRight: '24px'
-    },
-    linkStyle: {
-        textDecoration: 'none',
-        display: 'block'
     }
 };
 export default class App extends React.Component {
@@ -28,7 +23,7 @@ export default class App extends React.Component {
 
                         <FontIcon className="material-icons" style={styles.iconStyles}>
                             <Link
-                                style={styles.linkStyle}to="/">home
+                                style={styles.linkStyle} to="/">home
                             </Link>
                         </FontIcon>
 
@@ -47,17 +42,17 @@ export default class App extends React.Component {
                         >
                             <MenuItem primaryText={
                                 <Link
-                                    style={styles.linkStyle}to="/">Home
+                                    style={styles.linkStyle} to="/">Home
                                 </Link>
                             } />
                             <MenuItem primaryText={
                                 <Link
-                                    style={styles.linkStyle}to="/manage" target="_blank">Manage
+                                    style={styles.linkStyle} to="/children" >Children
                                 </Link>
                             } />
                             <MenuItem primaryText={
                                 <Link
-                                    style={styles.linkStyle}to="/create">Create
+                                    style={styles.linkStyle} to="/create">Create
                                 </Link>
                             } />
                             <MenuItem primaryText="Help" />
