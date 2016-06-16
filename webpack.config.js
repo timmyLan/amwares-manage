@@ -4,7 +4,7 @@ var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 module.exports = {
     devtool: 'eval',
     entry: {
-        'index': ['./public/app/app', hotMiddlewareScript]
+        'index': ['whatwg-fetch','./public/app/app', hotMiddlewareScript]
     },
     output: {
         path: path.join(__dirname, 'dist'),

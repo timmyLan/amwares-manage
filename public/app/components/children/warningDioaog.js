@@ -8,6 +8,13 @@ import FlatButton from 'material-ui/FlatButton';
 export default class WarnningDialog extends React.Component {
     render(){
         let handleClose = () => this.props.actions.warningClose();
+        let DeleteChild = () => {
+            let data = {
+                id : this.props.warningDialogState.row._id
+            };
+            this.props.actions.deleteChild(data);
+            handleClose();
+        };
         const actions = [
             <FlatButton
                 label="Cancel"
@@ -17,7 +24,7 @@ export default class WarnningDialog extends React.Component {
                 label="Delete"
                 secondary={true}
                 keyboardFocused={true}
-                onTouchTap={handleClose}
+                onTouchTap={DeleteChild}
             />
         ];
         return(

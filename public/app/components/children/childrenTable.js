@@ -8,23 +8,18 @@ import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
 import InfoDialog from './infoDialog';
 import WarningDialog from './warningDioaog';
+import 'whatwg-fetch';
 const styles ={
     tableColumn :{
         textAlign:'center'
     }
 };
-const tableData = [
-    {
-        name: 'John Smith',
-        age: '12'
-    },
-    {
-        name: 'Randal White',
-        age: '14'
-    }
-];
 export default class ChildrenTable extends React.Component {
+    componentDidMount() {
+        this.props.actions.getRows();
+    }
     render() {
+        let tableData = this.props.tableRows;
         let tableDataMap = tableData.map((row, index) => (
             <TableRow key={index}>
                 <TableRowColumn style={styles.tableColumn}>{index}</TableRowColumn>

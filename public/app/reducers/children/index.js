@@ -4,9 +4,11 @@
 import { combineReducers } from 'redux'
 import infoDialogState from './infoDialog'
 import warningDialogState from './warningDialog'
+import tableRows from './tableRows'
 const childrenReducer = combineReducers({
     infoDialogState : infoDialogState,
-    warningDialogState : warningDialogState
+    warningDialogState : warningDialogState,
+    tableRows : tableRows
 });
 
 export default  childrenReducer;

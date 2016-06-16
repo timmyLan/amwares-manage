@@ -9,6 +9,7 @@ var compiler = webpack(config);
 
 var index = require('./server/routes/index');
 var user = require('./server/routes/user');
+var children = require('./server/routes/children');
 
 /*webpack*/
 app.use(require('webpack-dev-middleware')(compiler, {
@@ -20,25 +21,29 @@ app.use(require('webpack-hot-middleware')(compiler));
 
 /*public*/
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }));
+app.use(bodyParser.json());
 
 /*views*/
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-/*mongoose*/
+/*mongodb connect*/
 mongoose.connect('localhost','report', function (error) {
     if (error) {
         console.log(error);
     }
 });
-
-app.use('/', index);
-app.use('/user', user);
-
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    app.use('/', index);
+    app.use('/user', user);
+    app.use('/children', children);
+});
 
 app.listen(3000, 'localhost', function(err) {
     if (err) {
