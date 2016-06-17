@@ -20,7 +20,7 @@ export default class InfoDialog extends React.Component {
                 data[key] = value;
             }
             if(this.props.infoDialogState.title == 'Edit'){
-                data = {...data,id:this.props.infoDialogState.row._id};
+                data = {...data,id:this.props.infoDialogState.row._id,page:this.props.tableInfo.page};
                 this.props.actions.updateChild(data);
             }else if(this.props.infoDialogState.title == 'Create'){
                 this.props.actions.createChild(data);

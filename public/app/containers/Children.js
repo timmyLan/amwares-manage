@@ -29,7 +29,7 @@ class Children extends React.Component {
 export default connect((state) => ({
     infoDialogState: state.children.infoDialogState,
     warningDialogState: state.children.warningDialogState,
-    tableRows: state.children.tableRows
+    tableInfo: state.children.tableInfo
 }), dispatch => ({
     actions: bindActionCreators(ItemsActions, dispatch)
 }))(Children)

@@ -38,9 +38,9 @@ export function changeTitle(title){
     }
 }
 
-export function getRows() {
+export function getRows(parmas) {
     return dispatch => {
-       fetch('/children/list')
+       fetch('/children/list?'+parmas)
             .then(response => response.json())
             .then(json =>
                 dispatch({type: TABLE_ROWS_LIST,json})

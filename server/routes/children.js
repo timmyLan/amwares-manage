@@ -16,8 +16,9 @@ router.post('/create', function(req, res, next) {
 });
 
 router.get('/list', function(req, res, next) {
-    Children.find({}).sort({_id:'desc'}).exec(function (err, docs) {
-        res.send(docs);
+    var parmas = req.query;
+    Children.paginate({}, { page: parmas.page, limit: 10 ,sort: { _id: 'desc'} }, function(err, result) {
+        res.send(result);
     });
 });
 
@@ -25,8 +26,8 @@ router.post('/delete', function(req, res, next) {
     var parmas = req.body;
     Children.remove({_id:parmas.id},function(err){
         if(err) return console.error(err);
-        Children.find({}).sort({_id:'desc'}).exec(function (err, docs) {
-            res.send(docs);
+        Children.paginate({}, { page: parmas.page, limit: 10 ,sort: { _id: 'desc'} }, function(err, result) {
+            res.send(result);
         });
     });
 });
@@ -35,8 +36,8 @@ router.post('/update', function(req, res, next) {
     var parmas = req.body;
     Children.update({_id:parmas.id},{$set:{ name: parmas.name,age : parmas.age }},function(err){
         if(err) return console.error(err,docs);
-        Children.find({}).sort({_id:'desc'}).exec(function (err, docs) {
-            res.send(docs);
+        Children.paginate({}, { page: parmas.page, limit: 10 ,sort: { _id: 'desc'} }, function(err, result) {
+            res.send(result);
         });
     });
 });

@@ -6,23 +6,22 @@ import {Table, TableBody, TableHeader,TableHeaderColumn, TableRow,TableRowColumn
 import AppBar from 'material-ui/AppBar';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
+import ReactPaginate from 'react-paginate';
 import InfoDialog from './infoDialog';
 import WarningDialog from './warningDioaog';
 import 'whatwg-fetch';
+import querystring from 'querystring';
 const styles ={
     tableColumn :{
         textAlign:'center'
     }
 };
 export default class ChildrenTable extends React.Component {
-    componentDidMount() {
-        this.props.actions.getRows();
-    }
     render() {
-        let tableData = this.props.tableRows;
+        let tableData = this.props.tableInfo.tableRows;
         let tableDataMap = tableData.map((row, index) => (
             <TableRow key={index}>
-                <TableRowColumn style={styles.tableColumn}>{index}</TableRowColumn>
+                <TableRowColumn style={styles.tableColumn}>{index+1}</TableRowColumn>
                 <TableRowColumn style={styles.tableColumn}>{row.name}</TableRowColumn>
                 <TableRowColumn style={styles.tableColumn}>{row.age}</TableRowColumn>
                 <TableRowColumn style={styles.tableColumn}>
@@ -44,6 +43,10 @@ export default class ChildrenTable extends React.Component {
                 </TableRowColumn>
             </TableRow>
         ));
+        let handlePageClick = (data) =>{
+            let params = querystring.stringify({ page : data.selected + 1 });
+            this.props.actions.getRows(params);
+        };
         return (
             <div>
                 <AppBar
@@ -80,6 +83,17 @@ export default class ChildrenTable extends React.Component {
                         {tableDataMap}
                     </TableBody>
                 </Table>
+                <ReactPaginate previousLabel={"previous"}
+                               nextLabel={"next"}
+                               breakLabel={<a href="">...</a>}
+                               pageNum={this.props.tableInfo.pages}
+                               initialSelected ={Number(this.props.tableInfo.page)}
+                               marginPagesDisplayed={2}
+                               pageRangeDisplayed={5}
+                               clickCallback={handlePageClick}
+                               containerClassName={"pagination"}
+                               subContainerClassName={"pages pagination"}
+                               activeClassName={"active"} />
                 <InfoDialog {...this.props}/>
                 <WarningDialog {...this.props}/>
             </div>
