@@ -6,6 +6,7 @@ export default keyMirror({
     INFO_CLOSE : null,
     WARNING_OPEN : null,
     WARNING_CLOSE : null,
+    INITIAL_INFO : null,
     TABLE_ROWS_LIST : null,
     CREATE_CHILD : null,
     UPDATE_CHILD : null,

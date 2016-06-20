@@ -1,7 +1,7 @@
 /**
  * Created by llan on 2016/6/13.
  */
-import {TABLE_ROWS_LIST,CREATE_CHILD,DELETE_CHILD,UPDATE_CHILD} from '../../constants/actionTypes'
+import {TABLE_ROWS_LIST,CREATE_CHILD,DELETE_CHILD,UPDATE_CHILD,INITIAL_INFO} from '../../constants/actionTypes'
 
 const initialState = {
     tableRows : [],
@@ -11,6 +11,8 @@ const initialState = {
 
 export default function tableInfo(state = initialState, action) {
     switch(action.type) {
+        case INITIAL_INFO:
+            return initialState;
         case TABLE_ROWS_LIST:
             return {...state, tableRows:action.json.docs,pages:action.json.pages,page:Number(action.json.page)};
         case CREATE_CHILD:

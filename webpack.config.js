@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
+var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true'+','+'webpack/hot/only-dev-server';
 module.exports = {
     devtool: 'eval',
     entry: {
@@ -16,16 +16,18 @@ module.exports = {
         new webpack.NoErrorsPlugin()
     ],
     module: {
-        loaders: [{
-            test: /\.js$/,
-            loaders: ['babel'],
-            exclude: path.join(__dirname, 'node_modules')
-        },{
-            test: /\.(png|jpg)$/,
-            loader: 'url?limit=8192&context=client&name=[path][name].[ext]'
-        }, {
-            test: /\.scss$/,
-            loaders: ["style", "css?sourceMap", "sass?sourceMap"]
-        }]
+        loaders: [
+            {
+                test: /\.js$/,
+                loaders: ['react-hot','babel'],
+                exclude: path.join(__dirname, 'node_modules')
+            },{
+                test: /\.(png|jpg)$/,
+                loader: 'url?limit=8192&context=client&name=[path][name].[ext]'
+            }, {
+                test: /\.scss$/,
+                loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+            }
+        ]
     }
 };

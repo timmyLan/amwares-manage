@@ -44,6 +44,7 @@ export default class ChildrenTable extends React.Component {
             </TableRow>
         ));
         let handlePageClick = (data) =>{
+            console.log('selected',data.selected);
             let params = querystring.stringify({ page : data.selected + 1 });
             this.props.actions.getRows(params);
         };
