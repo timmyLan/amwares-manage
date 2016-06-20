@@ -17,6 +17,10 @@ const styles ={
     }
 };
 export default class ChildrenTable extends React.Component {
+    componentDidMount() {
+        let params = querystring.stringify({ page : 1 });
+        this.props.actions.getRows(params);
+    }
     render() {
         let tableData = this.props.tableInfo.tableRows;
         let tableDataMap = tableData.map((row, index) => (
@@ -44,7 +48,6 @@ export default class ChildrenTable extends React.Component {
             </TableRow>
         ));
         let handlePageClick = (data) =>{
-            console.log('selected',data.selected);
             let params = querystring.stringify({ page : data.selected + 1 });
             this.props.actions.getRows(params);
         };
@@ -84,17 +87,16 @@ export default class ChildrenTable extends React.Component {
                         {tableDataMap}
                     </TableBody>
                 </Table>
-                <ReactPaginate previousLabel={"previous"}
-                               nextLabel={"next"}
-                               breakLabel={<a href="">...</a>}
-                               pageNum={this.props.tableInfo.pages}
-                               initialSelected ={Number(this.props.tableInfo.page)}
-                               marginPagesDisplayed={2}
-                               pageRangeDisplayed={5}
-                               clickCallback={handlePageClick}
-                               containerClassName={"pagination"}
-                               subContainerClassName={"pages pagination"}
-                               activeClassName={"active"} />
+                {this.props.tableInfo.pages > 1 ? <ReactPaginate previousLabel={"previous"}
+                                                                 nextLabel={"next"}
+                                                                 breakLabel={<a href="">...</a>}
+                                                                 pageNum={this.props.tableInfo.pages}
+                                                                 marginPagesDisplayed={2}
+                                                                 pageRangeDisplayed={5}
+                                                                 clickCallback={handlePageClick}
+                                                                 containerClassName={"pagination"}
+                                                                 subContainerClassName={"pages pagination"}
+                                                                 activeClassName={"active"} /> : ''}
                 <InfoDialog {...this.props}/>
                 <WarningDialog {...this.props}/>
             </div>
