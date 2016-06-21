@@ -4,10 +4,18 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import {FormsyText} from 'formsy-material-ui/lib';
-const customContentStyle = {
-    width: '75%',
-    maxWidth: 'none'
+const styles = {
+    customContentStyle : {
+        width: '75%',
+        maxWidth: 'none'
+    },
+    btnStyle : {
+        marginRight : '1em',
+        float : 'right',
+        marginTop　: '1em'
+    }
 };
 
 export default class InfoDialog extends React.Component {
@@ -33,27 +41,17 @@ export default class InfoDialog extends React.Component {
             urlError: "Please provide a valid URL"
         };
         let { wordsError, numericError, urlError } = errorMessages;
-        const actions = [
-            <FlatButton
-                label="Cancel"
-                onTouchTap={handleClose}
-            />,
-            <FlatButton
-                onTouchTap={createChild}
-                label="Submit"
-                primary={true}/>
-        ];
         return (
             <div>
                 <Dialog
                     title={this.props.infoDialogState.title}
-                    actions={actions}
                     modal={true}
-                    contentStyle={customContentStyle}
+                    contentStyle={styles.customContentStyle}
                     open={this.props.infoDialogState.open}
                 >
                     <Formsy.Form
                         id="childrenInfoForm"
+                        onValidSubmit={createChild}
                     >
                         <FormsyText
                             name="name"
@@ -67,12 +65,24 @@ export default class InfoDialog extends React.Component {
                         /><br/>
                         <FormsyText
                             name="age"
+                            validations="isNumeric"
+                            validationError={numericError}
                             required
                             hintText="How old are you?"
                             floatingLabelText="age"
                             fullWidth={true}
                             defaultValue={this.props.infoDialogState.row ? this.props.infoDialogState.row.age : ''}
                         /><br/>
+                        <RaisedButton
+                            label="Submit"
+                            type="submit"
+                            style={styles.btnStyle}
+                            primary={true}/>
+                        <RaisedButton
+                            label="Cancel"
+                            onTouchTap={handleClose}
+                            style={styles.btnStyle}
+                        />
                     </Formsy.Form>
                 </Dialog>
             </div>
