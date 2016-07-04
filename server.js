@@ -32,11 +32,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 /*mongodb connect*/
-mongoose.connect('localhost','report', function (error) {
-    if (error) {
-        console.log(error);
-    }
-});
+mongoose.connect('mongodb://localhost/report');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
