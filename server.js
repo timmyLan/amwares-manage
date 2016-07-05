@@ -10,7 +10,8 @@ var compiler = webpack(config);
 var index = require('./server/routes/index');
 var user = require('./server/routes/user');
 var children = require('./server/routes/children');
-
+var bluebird = require('bluebird');
+var q = require('q');
 /*webpack*/
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
@@ -23,7 +24,7 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({
-    extended: true
+  extended: true
 }));
 app.use(bodyParser.json());
 
@@ -32,23 +33,26 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 /*mongodb connect*/
-mongoose.connect('localhost','report', function (error) {
-    if (error) {
-        console.log(error);
-    }
+mongoose.Promise = require('bluebird');
+mongoose.Promise = require('q').Promise;
+mongoose.Promise = global.Promise;
+mongoose.connect('localhost', 'report', function(error) {
+  if (error) {
+    console.log(error);
+  }
 });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-    app.use('/', index);
-    app.use('/user', user);
-    app.use('/children', children);
+  app.use('/', index);
+  app.use('/user', user);
+  app.use('/children', children);
 });
 
 app.listen(3000, 'localhost', function(err) {
-    if (err) {
-        console.log(err);
-        return;
-    }
-    console.log('Listening at http://localhost:3000');
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log('Listening at http://localhost:3000');
 });

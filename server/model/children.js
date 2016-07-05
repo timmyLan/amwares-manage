@@ -6,8 +6,8 @@ var mongoosePaginate = require('mongoose-paginate');
 // Mongoose Schema definition
 var Schema = mongoose.Schema;
 var ChildrenSchema = new Schema({
-    name: String,
-    age: Number
+  name: String,
+  age: Number
 });
 ChildrenSchema.plugin(mongoosePaginate);
 // Mongoose Model definition
