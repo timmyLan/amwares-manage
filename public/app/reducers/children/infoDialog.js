@@ -1,8 +1,7 @@
 /**
  * Created by llan on 2016/6/13.
  */
-import {INFO_OPEN,INFO_CLOSE,INFO_TITLE} from '../../constants/actionTypes'
-
+import {INFO_OPEN,INFO_CLOSE,INFO_TITLE} from '../../actions/children';
 const initialState =  {
     open : false,
     row : {} ,

@@ -1,36 +1,21 @@
 /**
  * Created by llan on 2016/6/14.
  */
-import {INFO_CLOSE,INFO_OPEN,WARNING_CLOSE,WARNING_OPEN,INFO_TITLE,
-    TABLE_ROWS_LIST,CREATE_CHILD,DELETE_CHILD,UPDATE_CHILD,INITIAL_INFO}
-    from '../constants/actionTypes'
 import 'whatwg-fetch';
+export const INFO_OPEN = 'INFO_OPEN';
 export function infoOpen(row) {
     return {
         type: INFO_OPEN,
         row
     }
 }
-
+export const INFO_CLOSE = 'INFO_CLOSE';
 export function infoClose() {
     return {
         type: INFO_CLOSE
     }
 }
-
-export function warningClose() {
-    return {
-        type: WARNING_CLOSE
-    }
-}
-
-export function warningOpen(row) {
-    return {
-        type: WARNING_OPEN,
-        row
-    }
-}
-
+export const INFO_TITLE = 'INFO_TITLE';
 export function changeTitle(title){
     return {
         type: INFO_TITLE,
@@ -38,23 +23,39 @@ export function changeTitle(title){
     }
 }
 
+export const WARNING_CLOSE = 'WARNING_CLOSE';
+export function warningClose() {
+    return {
+        type: WARNING_CLOSE
+    }
+}
 
+export const WARNING_OPEN = 'WARNING_OPEN';
+export function warningOpen(row) {
+    return {
+        type: WARNING_OPEN,
+        row
+    }
+}
+
+export const INITIAL_INFO = 'INITIAL_INFO';
 export function initialInfo(){
     return {
         type: INITIAL_INFO
     }
 }
 
+export const TABLE_ROWS_LIST = 'TABLE_ROWS_LIST';
 export function getRows(parmas) {
     return dispatch => {
        fetch('/children/list?'+parmas)
             .then(response => response.json())
             .then(json =>
-                dispatch({type: TABLE_ROWS_LIST,json})
+                dispatch({type:TABLE_ROWS_LIST,json})
             )
     }
 }
-
+export const CREATE_CHILD = 'CREATE_CHILD';
 export function createChild(data) {
     return dispatch => {
         fetch('/children/create',{
@@ -71,6 +72,7 @@ export function createChild(data) {
     }
 }
 
+export const DELETE_CHILD = 'DELETE_CHILD';
 export function deleteChild(data) {
     return dispatch => {
         fetch('/children/delete',{
@@ -87,6 +89,7 @@ export function deleteChild(data) {
     }
 }
 
+export const UPDATE_CHILD = 'UPDATE_CHILD';
 export function updateChild(data) {
     return dispatch => {
         fetch('/children/update',{
