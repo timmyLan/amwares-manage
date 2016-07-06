@@ -1,9 +1,7 @@
 /**
  * Created by llan on 2016/6/13.
  */
-import React from 'react';
 import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {FormsyText} from 'formsy-material-ui/lib';
 const styles = {

@@ -13,7 +13,11 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new webpack.ProvidePlugin({
+            React: 'react',
+            ReactDOM: 'react-dom'
+        })
     ],
     module: {
         loaders: [

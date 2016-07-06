@@ -1,7 +1,6 @@
 /**
  * Created by llan on 2016/6/8.
  */
-import React from 'react';
 const styles = {
     main_background: {
         padding: '72px 24px',

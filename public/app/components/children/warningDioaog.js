@@ -1,7 +1,6 @@
 /**
  * Created by llan on 2016/6/14.
  */
-import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 

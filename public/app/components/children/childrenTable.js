@@ -1,7 +1,6 @@
 /**
  * Created by llan on 2016/5/30.
  */
-import React from 'react';
 import {Table, TableBody, TableHeader,TableHeaderColumn, TableRow,TableRowColumn} from 'material-ui/Table';
 import AppBar from 'material-ui/AppBar';
 import FontIcon from 'material-ui/FontIcon';

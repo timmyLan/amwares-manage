@@ -1,8 +1,6 @@
 /**
  * Created by llan on 2016/6/8.
  */
-/*react*/
-import React from 'react';
 /*react-route*/
 import { Router, Route, IndexRoute , hashHistory } from 'react-router';
 

@@ -2,7 +2,6 @@
  * Created by llan on 2016/6/14.
  */
 'use strict';
-import React from 'react';
 /*components*/
 import ChildrenTable from '../components/children/childrenTable'
 /*redux*/

@@ -1,7 +1,6 @@
 /**
  * Created by llan on 2016/6/8.
  */
-import React from 'react';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
