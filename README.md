@@ -7,7 +7,7 @@ start
 * `create a connection name 'report'`
 * `start this project`
 ```
-$ git clone git@github.com:timmyLan/amwares-manage.git
+$ git clone https://github.com/timmyLan/amwares-manage.git
 ```
 ```
 $ cd amwares-manage && npm install
