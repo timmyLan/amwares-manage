@@ -55,13 +55,6 @@ export default class App extends React.Component {
       style={styles.linkStyle} to="/children" >Children
                                 </Link>
       } />
-                            <MenuItem primaryText={
-      <Link
-      style={styles.linkStyle} to="/create">Create
-                                </Link>
-      } />
-                            <MenuItem primaryText="Help" />
-                            <MenuItem primaryText="Sign out" />
                         </IconMenu>
                     </ToolbarGroup>
                 </Toolbar>

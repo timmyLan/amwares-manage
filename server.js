@@ -1,17 +1,17 @@
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
-var config = require('./webpack.config');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var app = express();
-var compiler = webpack(config);
+const path = require('path');
+const express = require('express');
+const webpack = require('webpack');
+const config = require('./webpack.config');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const app = express();
+const compiler = webpack(config);
 
-var index = require('./server/routes/index');
-var user = require('./server/routes/user');
-var children = require('./server/routes/children');
-var bluebird = require('bluebird');
-var q = require('q');
+const index = require('./server/routes/index');
+const user = require('./server/routes/user');
+const children = require('./server/routes/children');
+const bluebird = require('bluebird');
+const q = require('q');
 /*webpack*/
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
@@ -41,7 +41,7 @@ mongoose.connect('localhost', 'report', function(error) {
     console.log(error);
   }
 });
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   app.use('/', index);
