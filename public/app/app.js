@@ -1,4 +1,3 @@
-"use strict";
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import route from './containers/route'
@@ -9,7 +8,7 @@ import '../css/main.scss';
 injectTapEventPlugin();
 const store = configureStore();
 const App = () => (
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
+  <MuiThemeProvider muiTheme={getMuiTheme()}>
         <Provider store={store}>
             {route}
         </Provider>
@@ -17,6 +16,6 @@ const App = () => (
 );
 
 ReactDOM.render(
-    <App />,
-    document.getElementById('app')
+  <App />,
+  document.getElementById('app')
 );

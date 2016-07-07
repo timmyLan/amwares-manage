@@ -5,24 +5,24 @@ import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 import MenuItem from 'material-ui/MenuItem';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import {Link} from 'react-router';
+import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
+import { Link } from 'react-router';
 const styles = {
-    iconStyles: {
-        marginRight: '24px'
-    }
+  iconStyles: {
+    marginRight: '24px'
+  }
 };
 export default class App extends React.Component {
 
-    render() {
-        return (
-            <div>
+  render() {
+    return (
+      <div>
                 <Toolbar>
                     <ToolbarGroup firstChild={true}>
 
                         <FontIcon className="material-icons" style={styles.iconStyles}>
                             <Link
-                                style={styles.linkStyle} to="/">home
+      style={styles.linkStyle} to="/">home
                             </Link>
                         </FontIcon>
 
@@ -31,29 +31,35 @@ export default class App extends React.Component {
                         <ToolbarTitle text="Amwares"/>
                         <ToolbarSeparator />
                         <IconMenu
-                            iconButtonElement={<IconButton>
+      iconButtonElement={<IconButton>
                                 <FontIcon className="material-icons">
                                     filter_list
                                 </FontIcon>
                             </IconButton>}
-                            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-                            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                        >
+      anchorOrigin={{
+        horizontal: 'right',
+        vertical: 'top'
+      }}
+      targetOrigin={{
+        horizontal: 'right',
+        vertical: 'top'
+      }}
+      >
                             <MenuItem primaryText={
-                                <Link
-                                    style={styles.linkStyle} to="/">Home
+      <Link
+      style={styles.linkStyle} to="/">Home
                                 </Link>
-                            } />
+      } />
                             <MenuItem primaryText={
-                                <Link
-                                    style={styles.linkStyle} to="/children" >Children
+      <Link
+      style={styles.linkStyle} to="/children" >Children
                                 </Link>
-                            } />
+      } />
                             <MenuItem primaryText={
-                                <Link
-                                    style={styles.linkStyle} to="/create">Create
+      <Link
+      style={styles.linkStyle} to="/create">Create
                                 </Link>
-                            } />
+      } />
                             <MenuItem primaryText="Help" />
                             <MenuItem primaryText="Sign out" />
                         </IconMenu>
@@ -61,6 +67,6 @@ export default class App extends React.Component {
                 </Toolbar>
                 {this.props.children}
             </div>
-        );
-    }
+      );
+  }
 }

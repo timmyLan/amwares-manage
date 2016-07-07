@@ -18,11 +18,11 @@ const styles = {
 
 export default class InfoDialog extends React.Component {
   render() {
-    let handleClose = () => this.props.actions.infoClose();
-    let createChild = () => {
-      let formData = new FormData(document.getElementById('childrenInfoForm'));
+    const handleClose = () => this.props.actions.infoClose();
+    const createChild = () => {
+      const formData = new FormData(document.getElementById('childrenInfoForm'));
       let data = {};
-      for (let [key, value] of formData.entries()) {
+      for (const [key, value] of formData.entries()) {
         data[key] = value;
       }
       if (this.props.infoDialogState.title == 'Edit') {
@@ -41,7 +41,7 @@ export default class InfoDialog extends React.Component {
       wordsError: "Please only use letters",
       numericError: "Please provide a number"
     };
-    let {wordsError, numericError} = errorMessages;
+    const {wordsError, numericError} = errorMessages;
     return (
       <div>
                 <Dialog

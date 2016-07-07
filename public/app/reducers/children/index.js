@@ -6,9 +6,9 @@ import infoDialogState from './infoDialog'
 import warningDialogState from './warningDialog'
 import tableInfo from './tableInfo'
 const childrenReducer = combineReducers({
-    infoDialogState : infoDialogState,
-    warningDialogState : warningDialogState,
-    tableInfo : tableInfo
+  infoDialogState: infoDialogState,
+  warningDialogState: warningDialogState,
+  tableInfo: tableInfo
 });
 
-export default  childrenReducer;
+export default childrenReducer;
