@@ -1,7 +1,7 @@
 /**
  * Created by llan on 2016/6/13.
  */
-import { TABLE_ROWS_LIST, CREATE_CHILD, DELETE_CHILD, UPDATE_CHILD, INITIAL_INFO } from '../../actions/children';
+import { TABLE_ROWS_LIST, CREATE_CHILD, DELETE_CHILD, UPDATE_CHILD, INITIAL_INFO } from '../../actionType/index';
 const initialState = {
   tableRows: [],
   pages: 0,

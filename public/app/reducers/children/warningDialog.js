@@ -1,7 +1,7 @@
 /**
  * Created by llan on 2016/6/14.
  */
-import { WARNING_OPEN, WARNING_CLOSE } from '../../actions/children';
+import { WARNING_OPEN, WARNING_CLOSE } from '../../actionType/index';
 const initialState = {
   open: false,
   row: {}
