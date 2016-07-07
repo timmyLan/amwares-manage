@@ -10,8 +10,6 @@ const compiler = webpack(config);
 const index = require('./server/routes/index');
 const user = require('./server/routes/user');
 const children = require('./server/routes/children');
-const bluebird = require('bluebird');
-const q = require('q');
 /*webpack*/
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
