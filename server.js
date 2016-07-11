@@ -8,7 +8,6 @@ const app = express();
 const compiler = webpack(config);
 
 const index = require('./server/routes/index');
-const user = require('./server/routes/user');
 const children = require('./server/routes/children');
 /*webpack*/
 app.use(require('webpack-dev-middleware')(compiler, {
@@ -43,7 +42,6 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   app.use('/', index);
-  app.use('/user', user);
   app.use('/children', children);
 });
 
