@@ -17,6 +17,51 @@ router.post('/create', function(req, res, next) {
   });
 });
 
+router.post('/search',function(req, res, next){
+  const parmas = req.body;
+  if(parmas.name && parmas.age){
+    Children.paginate({name:{'$regex': parmas.name, $options: 'i'},age:parmas.age}, {
+      page: parmas.page,
+      limit: 10,
+      sort: {
+        _id: 'desc'
+      }
+    }, function(err, result) {
+      res.send(result);
+    });
+  }else if(parmas.name){
+    Children.paginate({name:{'$regex': parmas.name, $options: 'i'}}, {
+      page: parmas.page,
+      limit: 10,
+      sort: {
+        _id: 'desc'
+      }
+    }, function(err, result) {
+      res.send(result);
+    });
+  }else if(parmas.age){
+    Children.paginate({age:parmas.age}, {
+      page: parmas.page,
+      limit: 10,
+      sort: {
+        _id: 'desc'
+      }
+    }, function(err, result) {
+      res.send(result);
+    });
+  }else{
+    Children.paginate({}, {
+      page: parmas.page,
+      limit: 10,
+      sort: {
+        _id: 'desc'
+      }
+    }, function(err, result) {
+      res.send(result);
+    });
+  }
+});
+
 router.get('/list', function(req, res, next) {
   const parmas = req.query;
   Children.paginate({}, {

@@ -2,10 +2,12 @@
  * Created by llan on 2016/6/14.
  */
 import 'whatwg-fetch';
-import { INFO_OPEN, INFO_CLOSE, INFO_TITLE, WARNING_CLOSE, WARNING_OPEN, INITIAL_INFO, TABLE_ROWS_LIST, CREATE_CHILD, DELETE_CHILD, UPDATE_CHILD } from '../actionType/children';
+import {SEARCH_OPEN,SEARCH_CLOSE,SEARCH_CHILD,INFO_OPEN, INFO_CLOSE, INFO_TITLE, WARNING_CLOSE, WARNING_OPEN, INITIAL_INFO, TABLE_ROWS_LIST, CREATE_CHILD, DELETE_CHILD, UPDATE_CHILD } from '../actionType/children';
 import { actionCreator } from 'redux-action-utils';
 exports.infoOpen = actionCreator(INFO_OPEN, 'row');
 exports.infoClose = actionCreator(INFO_CLOSE);
+exports.searchOpen = actionCreator(SEARCH_OPEN);
+exports.searchClose = actionCreator(SEARCH_CLOSE);
 exports.changeTitle = actionCreator(INFO_TITLE, 'title');
 exports.warningClose = actionCreator(WARNING_CLOSE);
 exports.warningOpen = actionCreator(WARNING_OPEN, 'row');
@@ -20,6 +22,24 @@ export function getRows(parmas) {
           json
         })
       }
+    )
+  }
+}
+export function searchChild(data){
+  return dispatch => {
+    fetch('children/search',{
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(response => response.json())
+      .then(json => dispatch({
+        type: SEARCH_CHILD,
+        json,
+        data
+      })
     )
   }
 }

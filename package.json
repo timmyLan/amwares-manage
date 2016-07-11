@@ -4,8 +4,7 @@
   "description": "react-webpack-template",
   "scripts": {
     "start": "node server.js",
-    "pm2": "pm2 start server.js",
-    "test": "mocha --compilers js:babel/register --recursive"
+    "pm2": "pm2 start server.js"
   },
   "devDependencies": {
     "babel-core": "^6.7.7",
