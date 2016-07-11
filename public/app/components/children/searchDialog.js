@@ -13,6 +13,9 @@ const styles = {
   }
 };
 export default class SearchDialog extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const errorMessages = {
       wordsError: "Please only use letters",

@@ -17,6 +17,9 @@ const styles = {
   }
 };
 export default class ChildrenTable extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount() {
     const params = querystring.stringify({
       page: 1

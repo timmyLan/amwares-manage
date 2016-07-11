@@ -15,6 +15,9 @@ const styles = {
 };
 
 class Children extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div style={styles.container}>

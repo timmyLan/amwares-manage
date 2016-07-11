@@ -5,6 +5,9 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
 export default class WarnningDialog extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const handleClose = () => this.props.actions.warningClose();
     const DeleteChild = () => {

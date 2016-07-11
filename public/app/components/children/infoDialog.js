@@ -17,6 +17,9 @@ const styles = {
 };
 
 export default class InfoDialog extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const handleClose = () => this.props.actions.infoClose();
     const createChild = () => {
