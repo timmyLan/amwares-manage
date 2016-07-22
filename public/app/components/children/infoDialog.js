@@ -28,6 +28,9 @@ export default class InfoDialog extends React.Component {
       for (const [key, value] of formData.entries()) {
         data[key] = value;
       }
+      if(this.props.tableInfo.searchData.searchParmas){
+        data['searchParmas'] = this.props.tableInfo.searchData.searchParmas;
+      }
       if (this.props.infoDialogState.title == 'Edit') {
         data = {
           ...data,

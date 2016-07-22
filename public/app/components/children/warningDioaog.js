@@ -11,10 +11,13 @@ export default class WarnningDialog extends React.Component {
   render() {
     const handleClose = () => this.props.actions.warningClose();
     const DeleteChild = () => {
-      const data = {
+      let data = {
         id: this.props.warningDialogState.row._id,
         page: this.props.tableInfo.page
       };
+      if(this.props.tableInfo.searchData.searchParmas){
+        data['searchParmas'] = this.props.tableInfo.searchData.searchParmas;
+      }
       this.props.actions.deleteChild(data);
       handleClose();
     };
