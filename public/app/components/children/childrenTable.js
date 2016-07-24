@@ -53,8 +53,9 @@ export default class ChildrenTable extends React.Component {
             </TableRow>
     ));
     const handlePageClick = (data) => {
-      if(this.props.tableInfo.searchData){
-        this.props.actions.searchChild({...this.props.tableInfo.searchData,page: data.selected + 1});
+      if(this.props.tableInfo.searchData.searchParmas){
+        const searchParmas = {...this.props.tableInfo.searchData.searchParmas,page:data.selected+1};
+        this.props.actions.searchChild({searchParmas:searchParmas});
       }else{
         const params = querystring.stringify({
           page: data.selected + 1

@@ -4,14 +4,17 @@
 const express = require('express');
 const router = express.Router();
 const Children = require('../model/children');
-const handleResult = function(req, res, next , parmas){
-  let searchParmas = parmas.searchParmas;
-  if(parmas.search){
-    searchParmas = parmas;
-  }
-  if(searchParmas){
-    if(searchParmas.name && searchParmas.age){
-      Children.paginate({name:{'$regex': parmas.name, $options: 'i'},age:parmas.age}, {
+const handleResult = function(req, res, next, parmas) {
+  if (parmas.searchParmas) {
+    parmas = parmas.searchParmas;
+    if (parmas.name && parmas.age) {
+      Children.paginate({
+        name: {
+          '$regex': parmas.name,
+          $options: 'i'
+        },
+        age: parmas.age
+      }, {
         page: parmas.page,
         limit: 10,
         sort: {
@@ -20,8 +23,13 @@ const handleResult = function(req, res, next , parmas){
       }, function(err, result) {
         res.send(result);
       });
-    }else if(searchParmas.name){
-      Children.paginate({name:{'$regex': parmas.name, $options: 'i'}}, {
+    } else if (parmas.name) {
+      Children.paginate({
+        name: {
+          '$regex': parmas.name,
+          $options: 'i'
+        }
+      }, {
         page: parmas.page,
         limit: 10,
         sort: {
@@ -30,8 +38,20 @@ const handleResult = function(req, res, next , parmas){
       }, function(err, result) {
         res.send(result);
       });
-    }else if(searchParmas.age){
-      Children.paginate({age:parmas.age}, {
+    } else if (parmas.age) {
+      Children.paginate({
+        age: parmas.age
+      }, {
+        page: parmas.page,
+        limit: 10,
+        sort: {
+          _id: 'desc'
+        }
+      }, function(err, result) {
+        res.send(result);
+      });
+    }else {
+      Children.paginate({}, {
         page: parmas.page,
         limit: 10,
         sort: {
@@ -41,7 +61,7 @@ const handleResult = function(req, res, next , parmas){
         res.send(result);
       });
     }
-  }else{
+  } else {
     Children.paginate({}, {
       page: parmas.page,
       limit: 10,
@@ -65,9 +85,9 @@ router.post('/create', function(req, res, next) {
   });
 });
 
-router.post('/search',function(req, res, next){
+router.post('/search', function(req, res, next) {
   const parmas = req.body;
-  handleResult(req, res, next,parmas);
+  handleResult(req, res, next, parmas);
 });
 
 router.get('/list', function(req, res, next) {

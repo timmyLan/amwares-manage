@@ -29,8 +29,9 @@ export default class SearchDialog extends React.Component {
       for (const [key, value] of formData.entries()) {
          data[key] = value;
       }
-      data = {...data , page : 1 , search:true};
+      data = {...data , page : 1};
       data = { searchParmas : data};
+      console.log('data',data);
       this.props.actions.searchChild(data);
       handleClose();
     }
