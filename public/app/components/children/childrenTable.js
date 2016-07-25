@@ -11,14 +11,14 @@ import WarningDialog from './warningDioaog';
 import SearchDialog from './searchDialog';
 import 'whatwg-fetch';
 import querystring from 'querystring';
-const styles = {
-  tableColumn: {
-    textAlign: 'center'
-  }
-};
 export default class ChildrenTable extends React.Component {
   constructor(props) {
     super(props);
+    this.styles = {
+      tableColumn: {
+        textAlign: 'center'
+      }
+    };
   }
   componentDidMount() {
     const params = querystring.stringify({
@@ -26,43 +26,70 @@ export default class ChildrenTable extends React.Component {
     });
     this.props.actions.getRows(params);
   }
-  render() {
-    const tableData = this.props.tableInfo.tableRows;
-    const tableDataMap = tableData.map((row, index) => (
-      <TableRow key={index}>
-                <TableRowColumn style={styles.tableColumn}>{index + 1}</TableRowColumn>
-                <TableRowColumn style={styles.tableColumn}>{row.name}</TableRowColumn>
-                <TableRowColumn style={styles.tableColumn}>{row.age}</TableRowColumn>
-                <TableRowColumn style={styles.tableColumn}>
-                    <IconButton onTouchTap = {() => {
-                    this.props.actions.infoOpen(row);
-                    this.props.actions.changeTitle('Edit');
-                    }}>
-                      <FontIcon className="material-icons">
-                          mode_edit
-                      </FontIcon>
-                    </IconButton>
-                    <IconButton onTouchTap = {() => {
-                    this.props.actions.warningOpen(row);
-                    }}>
-                      <FontIcon className="material-icons">
-                          delete_forever
-                      </FontIcon>
-                    </IconButton>
-                </TableRowColumn>
-            </TableRow>
-    ));
-    const handlePageClick = (data) => {
-      if(this.props.tableInfo.searchData.searchParmas){
-        const searchParmas = {...this.props.tableInfo.searchData.searchParmas,page:data.selected+1};
-        this.props.actions.searchChild({searchParmas:searchParmas});
-      }else{
-        const params = querystring.stringify({
-          page: data.selected + 1
-        });
-        this.props.actions.getRows(params);
+  handleClearSearch(){
+    const data = {
+      searchParmas:{
+        page:1
       }
-    };
+    }
+    this.props.actions.searchChild(data);
+  }
+  handlePageClick(data){
+    if(this.props.tableInfo.searchData.searchParmas){
+      const searchParmas = {...this.props.tableInfo.searchData.searchParmas,page:data.selected+1};
+      this.props.actions.searchChild({searchParmas:searchParmas});
+    }else{
+      const params = querystring.stringify({
+        page: data.selected + 1
+      });
+      this.props.actions.getRows(params);
+    }
+  }
+  clearSearch(){
+    const searchParmas = this.props.tableInfo.searchData.searchParmas;
+    if(searchParmas){
+      if(searchParmas.name || searchParmas.age){
+        return (
+          <IconButton tooltip="ClearSearch" onTouchTap = {() => this.handleClearSearch()}>
+                <FontIcon className="material-icons" color="#fff">
+                    clear
+                </FontIcon>
+          </IconButton>
+        )
+      }else{
+        return null;
+      }
+    }
+  }
+  tableMap(){
+    const tableData = this.props.tableInfo.tableRows;
+    return tableData.map((row, index) =>(
+        <TableRow key={index}>
+            <TableRowColumn style={this.styles.tableColumn}>{index + 1}</TableRowColumn>
+            <TableRowColumn style={this.styles.tableColumn}>{row.name}</TableRowColumn>
+            <TableRowColumn style={this.styles.tableColumn}>{row.age}</TableRowColumn>
+            <TableRowColumn style={this.styles.tableColumn}>
+                <IconButton onTouchTap = {() => {
+                this.props.actions.infoOpen(row);
+                this.props.actions.changeTitle('Edit');
+                }}>
+                  <FontIcon className="material-icons">
+                      mode_edit
+                  </FontIcon>
+                </IconButton>
+                <IconButton onTouchTap = {() => {
+                this.props.actions.warningOpen(row);
+                }}>
+                  <FontIcon className="material-icons">
+                      delete_forever
+                  </FontIcon>
+                </IconButton>
+            </TableRowColumn>
+        </TableRow>
+      )
+    )
+  }
+  render() {
     return (
       <div>
         <AppBar
@@ -85,6 +112,9 @@ export default class ChildrenTable extends React.Component {
                       search
                   </FontIcon>
             </IconButton>
+            {
+              this.clearSearch()
+            }
           </div>}
         />
         <Table
@@ -94,17 +124,17 @@ export default class ChildrenTable extends React.Component {
             displaySelectAll={false}
             adjustForCheckbox={false}>
               <TableRow>
-                  <TableHeaderColumn style={styles.tableColumn} tooltip="The ID">#</TableHeaderColumn>
-                  <TableHeaderColumn style={styles.tableColumn} tooltip="The Name">Name</TableHeaderColumn>
-                  <TableHeaderColumn style={styles.tableColumn} tooltip="The Age">Age</TableHeaderColumn>
-                  <TableHeaderColumn style={styles.tableColumn} tooltip="The Operate">Operate</TableHeaderColumn>
+                  <TableHeaderColumn style={this.styles.tableColumn} tooltip="The ID">#</TableHeaderColumn>
+                  <TableHeaderColumn style={this.styles.tableColumn} tooltip="The Name">Name</TableHeaderColumn>
+                  <TableHeaderColumn style={this.styles.tableColumn} tooltip="The Age">Age</TableHeaderColumn>
+                  <TableHeaderColumn style={this.styles.tableColumn} tooltip="The Operate">Operate</TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody
             showRowHover={true}
             displayRowCheckbox={false}
             stripedRows={true}>
-                {tableDataMap}
+                {this.tableMap()}
             </TableBody>
         </Table>
         {this.props.tableInfo.pages > 1 ? <ReactPaginate previousLabel={"previous"}
@@ -113,7 +143,7 @@ export default class ChildrenTable extends React.Component {
               pageNum={this.props.tableInfo.pages}
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
-              clickCallback={handlePageClick}
+              clickCallback={(data)=>this.handlePageClick(data)}
               containerClassName={"pagination"}
               subContainerClassName={"pages pagination"}
               activeClassName={"active"} /> : ''}
