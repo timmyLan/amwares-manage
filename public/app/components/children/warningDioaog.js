@@ -8,29 +8,31 @@ export default class WarnningDialog extends React.Component {
   constructor(props) {
     super(props);
   }
-  render() {
-    const handleClose = () => this.props.actions.warningClose();
-    const DeleteChild = () => {
-      let data = {
-        id: this.props.warningDialogState.row._id,
-        page: this.props.tableInfo.page
-      };
-      if(this.props.tableInfo.searchData.searchParmas){
-        data['searchParmas'] = this.props.tableInfo.searchData.searchParmas;
-      }
-      this.props.actions.deleteChild(data);
-      handleClose();
+  handleClose(){
+    this.props.actions.warningClose();
+  }
+  DeleteChild(){
+    const data = {
+      id: this.props.warningDialogState.row._id,
+      page: this.props.tableInfo.page
     };
+    if(this.props.tableInfo.searchData.searchParmas){
+      data['searchParmas'] = this.props.tableInfo.searchData.searchParmas;
+    }
+    this.props.actions.deleteChild(data);
+    this.handleClose();
+  }
+  render() {
     const actions = [
       <FlatButton
       label="Cancel"
-      onTouchTap={handleClose}
+      onTouchTap={()=>this.handleClose()}
       />,
       <FlatButton
       label="Delete"
       secondary={true}
       keyboardFocused={true}
-      onTouchTap={DeleteChild}
+      onTouchTap={()=>this.DeleteChild()}
       />
     ];
     return (
@@ -39,7 +41,7 @@ export default class WarnningDialog extends React.Component {
       actions={actions}
       modal={false}
       open={this.props.warningDialogState.open}
-      onRequestClose={handleClose}
+      onRequestClose={()=>this.handleClose()}
       >
                 Are you want to delete this?
             </Dialog>

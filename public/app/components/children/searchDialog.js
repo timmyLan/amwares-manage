@@ -1,40 +1,30 @@
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import { FormsyText } from 'formsy-material-ui/lib';
-const styles = {
-  customContentStyle: {
-    width: '75%',
-    maxWidth: 'none'
-  },
-  btnStyle: {
-    marginRight: '1em',
-    float: 'right',
-    marginTop: '1em'
-  }
+const errorMessages = {
+  wordsError: "Please only use letters",
+  numericError: "Please provide a number"
 };
+const {wordsError, numericError} = errorMessages;
 export default class SearchDialog extends React.Component {
   constructor(props) {
     super(props);
   }
-  render() {
-    const errorMessages = {
-      wordsError: "Please only use letters",
-      numericError: "Please provide a number"
-    };
-    const {wordsError, numericError} = errorMessages;
-    const handleClose = () => this.props.actions.searchClose();
-    const searchChild = () => {
-      const formData = new FormData(document.getElementById('childrenSearchForm'));
-      let data = {};
-      for (const [key, value] of formData.entries()) {
-         data[key] = value;
-      }
-      data = {...data , page : 1};
-      data = { searchParmas : data};
-      console.log('data',data);
-      this.props.actions.searchChild(data);
-      handleClose();
+  handleClose(){
+    this.props.actions.searchClose();
+  }
+  searchChild(){
+    const formData = new FormData(document.getElementById('childrenSearchForm'));
+    let data = {};
+    for (const [key, value] of formData.entries()) {
+       data[key] = value;
     }
+    data = {...data , page : 1};
+    data = { searchParmas : data};
+    this.props.actions.searchChild(data);
+    this.handleClose();
+  }
+  render() {
     return (
       <div>
         <Dialog
@@ -45,7 +35,7 @@ export default class SearchDialog extends React.Component {
         >
           <Formsy.Form
           id="childrenSearchForm"
-          onValidSubmit={searchChild}
+          onValidSubmit={()=>this.searchChild()}
           >
             <FormsyText
             name="name"
@@ -70,7 +60,7 @@ export default class SearchDialog extends React.Component {
             primary={true}/>
             <RaisedButton
             label="Cancel"
-            onTouchTap={handleClose}
+            onTouchTap={()=>this.handleClose()}
             style={styles.btnStyle}
             />
           </Formsy.Form>
@@ -79,3 +69,14 @@ export default class SearchDialog extends React.Component {
     )
   }
 }
+const styles = {
+  customContentStyle: {
+    width: '75%',
+    maxWidth: 'none'
+  },
+  btnStyle: {
+    marginRight: '1em',
+    float: 'right',
+    marginTop: '1em'
+  }
+};

@@ -4,50 +4,40 @@
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import { FormsyText } from 'formsy-material-ui/lib';
-const styles = {
-  customContentStyle: {
-    width: '75%',
-    maxWidth: 'none'
-  },
-  btnStyle: {
-    marginRight: '1em',
-    float: 'right',
-    marginTop: '1em'
-  }
+const errorMessages = {
+  wordsError: "Please only use letters",
+  numericError: "Please provide a number"
 };
-
+const {wordsError, numericError} = errorMessages;
 export default class InfoDialog extends React.Component {
   constructor(props) {
     super(props);
   }
+  handleClose(){
+    this.props.actions.infoClose()
+  }
+  createChild(){
+    const formData = new FormData(document.getElementById('childrenInfoForm'));
+    let data = {};
+    for (const [key, value] of formData.entries()) {
+      data[key] = value;
+    }
+    if(this.props.tableInfo.searchData.searchParmas){
+      data['searchParmas'] = this.props.tableInfo.searchData.searchParmas;
+    }
+    if (this.props.infoDialogState.title == 'Edit') {
+      data = {
+        ...data,
+        id: this.props.infoDialogState.row._id,
+        page: this.props.tableInfo.page
+      };
+      this.props.actions.updateChild(data);
+    } else if (this.props.infoDialogState.title == 'Create') {
+      this.props.actions.createChild(data);
+    }
+    this.handleClose();
+  }
   render() {
-    const handleClose = () => this.props.actions.infoClose();
-    const createChild = () => {
-      const formData = new FormData(document.getElementById('childrenInfoForm'));
-      let data = {};
-      for (const [key, value] of formData.entries()) {
-        data[key] = value;
-      }
-      if(this.props.tableInfo.searchData.searchParmas){
-        data['searchParmas'] = this.props.tableInfo.searchData.searchParmas;
-      }
-      if (this.props.infoDialogState.title == 'Edit') {
-        data = {
-          ...data,
-          id: this.props.infoDialogState.row._id,
-          page: this.props.tableInfo.page
-        };
-        this.props.actions.updateChild(data);
-      } else if (this.props.infoDialogState.title == 'Create') {
-        this.props.actions.createChild(data);
-      }
-      handleClose();
-    };
-    const errorMessages = {
-      wordsError: "Please only use letters",
-      numericError: "Please provide a number"
-    };
-    const {wordsError, numericError} = errorMessages;
     return (
       <div>
         <Dialog
@@ -58,7 +48,7 @@ export default class InfoDialog extends React.Component {
         >
         <Formsy.Form
         id="childrenInfoForm"
-        onValidSubmit={createChild}
+        onValidSubmit={()=>this.createChild()}
         >
           <FormsyText
           name="name"
@@ -87,7 +77,7 @@ export default class InfoDialog extends React.Component {
           primary={true}/>
           <RaisedButton
           label="Cancel"
-          onTouchTap={handleClose}
+          onTouchTap={()=>this.handleClose()}
           style={styles.btnStyle}
           />
         </Formsy.Form>
@@ -96,3 +86,14 @@ export default class InfoDialog extends React.Component {
     );
   }
 }
+const styles = {
+  customContentStyle: {
+    width: '75%',
+    maxWidth: 'none'
+  },
+  btnStyle: {
+    marginRight: '1em',
+    float: 'right',
+    marginTop: '1em'
+  }
+};

@@ -14,11 +14,6 @@ import querystring from 'querystring';
 export default class ChildrenTable extends React.Component {
   constructor(props) {
     super(props);
-    this.styles = {
-      tableColumn: {
-        textAlign: 'center'
-      }
-    };
   }
   componentDidMount() {
     const params = querystring.stringify({
@@ -65,10 +60,10 @@ export default class ChildrenTable extends React.Component {
     const tableData = this.props.tableInfo.tableRows;
     return tableData.map((row, index) =>(
         <TableRow key={index}>
-            <TableRowColumn style={this.styles.tableColumn}>{index + 1}</TableRowColumn>
-            <TableRowColumn style={this.styles.tableColumn}>{row.name}</TableRowColumn>
-            <TableRowColumn style={this.styles.tableColumn}>{row.age}</TableRowColumn>
-            <TableRowColumn style={this.styles.tableColumn}>
+            <TableRowColumn style={styles.tableColumn}>{index + 1}</TableRowColumn>
+            <TableRowColumn style={styles.tableColumn}>{row.name}</TableRowColumn>
+            <TableRowColumn style={styles.tableColumn}>{row.age}</TableRowColumn>
+            <TableRowColumn style={styles.tableColumn}>
                 <IconButton onTouchTap = {() => {
                 this.props.actions.infoOpen(row);
                 this.props.actions.changeTitle('Edit');
@@ -124,10 +119,10 @@ export default class ChildrenTable extends React.Component {
             displaySelectAll={false}
             adjustForCheckbox={false}>
               <TableRow>
-                  <TableHeaderColumn style={this.styles.tableColumn} tooltip="The ID">#</TableHeaderColumn>
-                  <TableHeaderColumn style={this.styles.tableColumn} tooltip="The Name">Name</TableHeaderColumn>
-                  <TableHeaderColumn style={this.styles.tableColumn} tooltip="The Age">Age</TableHeaderColumn>
-                  <TableHeaderColumn style={this.styles.tableColumn} tooltip="The Operate">Operate</TableHeaderColumn>
+                  <TableHeaderColumn style={styles.tableColumn} tooltip="The ID">#</TableHeaderColumn>
+                  <TableHeaderColumn style={styles.tableColumn} tooltip="The Name">Name</TableHeaderColumn>
+                  <TableHeaderColumn style={styles.tableColumn} tooltip="The Age">Age</TableHeaderColumn>
+                  <TableHeaderColumn style={styles.tableColumn} tooltip="The Operate">Operate</TableHeaderColumn>
               </TableRow>
             </TableHeader>
             <TableBody
@@ -154,3 +149,8 @@ export default class ChildrenTable extends React.Component {
       );
   }
 }
+const styles = {
+  tableColumn: {
+    textAlign: 'center'
+  }
+};
