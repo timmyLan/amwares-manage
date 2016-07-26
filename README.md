@@ -36,7 +36,3 @@ es6 书写
 
 * [mongodb](https://docs.mongodb.com/)、[mongoose](http://mongoosejs.com/)
 数据库
-
-demo
---------
-![image](http://oawkgaf4u.bkt.clouddn.com/manage.gif)
