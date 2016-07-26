@@ -39,4 +39,4 @@ es6 书写
 
 demo
 --------
-![image](http://oawkgaf4u.bkt.clouddn.com/demo.gif)
+![image](http://oawkgaf4u.bkt.clouddn.com/manage.gif)
