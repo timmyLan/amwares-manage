@@ -25,26 +25,26 @@ export default class WarnningDialog extends React.Component {
   render() {
     const actions = [
       <FlatButton
-      label="Cancel"
-      onTouchTap={()=>this.handleClose()}
+        label="Cancel"
+        onTouchTap={()=>this.handleClose()}
       />,
       <FlatButton
-      label="Delete"
-      secondary={true}
-      keyboardFocused={true}
-      onTouchTap={()=>this.DeleteChild()}
+        label="Delete"
+        secondary={true}
+        keyboardFocused={true}
+        onTouchTap={()=>this.DeleteChild()}
       />
     ];
     return (
       <Dialog
-      title="Delete"
-      actions={actions}
-      modal={false}
-      open={this.props.warningDialogState.open}
-      onRequestClose={()=>this.handleClose()}
+        title="Delete"
+        actions={actions}
+        modal={false}
+        open={this.props.warningDialogState.open}
+        onRequestClose={()=>this.handleClose()}
       >
-                Are you want to delete this?
-            </Dialog>
+        Are you want to delete this?
+        </Dialog>
     )
   }
 }

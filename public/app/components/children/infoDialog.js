@@ -41,44 +41,46 @@ export default class InfoDialog extends React.Component {
     return (
       <div>
         <Dialog
-        title={this.props.infoDialogState.title}
-        modal={true}
-        contentStyle={styles.customContentStyle}
-        open={this.props.infoDialogState.open}
+          title={this.props.infoDialogState.title}
+          modal={true}
+          contentStyle={styles.customContentStyle}
+          open={this.props.infoDialogState.open}
         >
         <Formsy.Form
-        id="childrenInfoForm"
-        onValidSubmit={()=>this.createChild()}
+          id="childrenInfoForm"
+          onValidSubmit={()=>this.createChild()}
         >
           <FormsyText
-          name="name"
-          validations="isWords"
-          validationError={wordsError}
-          required
-          hintText="What is your name?"
-          floatingLabelText="Name"
-          fullWidth={true}
-          defaultValue={this.props.infoDialogState.row ? this.props.infoDialogState.row.name : ''}
-          /><br/>
+            name="name"
+            validations="isWords"
+            validationError={wordsError}
+            required
+            hintText="What is your name?"
+            floatingLabelText="Name"
+            fullWidth={true}
+            defaultValue={this.props.infoDialogState.row ? this.props.infoDialogState.row.name : ''}
+          />
+          <br/>
           <FormsyText
-          name="age"
-          validations="isNumeric"
-          validationError={numericError}
-          required
-          hintText="How old are you?"
-          floatingLabelText="age"
-          fullWidth={true}
-          defaultValue={this.props.infoDialogState.row ? this.props.infoDialogState.row.age : ''}
-          /><br/>
+            name="age"
+            validations="isNumeric"
+            validationError={numericError}
+            required
+            hintText="How old are you?"
+            floatingLabelText="age"
+            fullWidth={true}
+            defaultValue={this.props.infoDialogState.row ? this.props.infoDialogState.row.age : ''}
+          />
+          <br/>
           <RaisedButton
-          label="Submit"
-          type="submit"
-          style={styles.btnStyle}
-          primary={true}/>
-          <RaisedButton
-          label="Cancel"
-          onTouchTap={()=>this.handleClose()}
-          style={styles.btnStyle}
+            label="Submit"
+            type="submit"
+            style={styles.btnStyle}
+            primary={true}/>
+            <RaisedButton
+            label="Cancel"
+            onTouchTap={()=>this.handleClose()}
+            style={styles.btnStyle}
           />
         </Formsy.Form>
       </Dialog>

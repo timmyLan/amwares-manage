@@ -10,10 +10,10 @@ import Children from './Children';
 
 const route = (
 <Router history={hashHistory}>
-        <Route path="/" component={App}>
-            <IndexRoute component={Home} />
-            <Route path="children" component={Children} />
-        </Route>
-    </Router>
+  <Route path="/" component={App}>
+      <IndexRoute component={Home} />
+      <Route path="children" component={Children} />
+  </Route>
+</Router>
 );
 export default route;

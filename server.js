@@ -33,7 +33,7 @@ app.set('view engine', 'hbs');
 mongoose.Promise = require('bluebird');
 mongoose.Promise = require('q').Promise;
 mongoose.Promise = global.Promise;
-mongoose.connect('localhost', 'report', function(error) {
+mongoose.connect('localhost', 'children', function(error) {
   if (error) {
     console.log(error);
   }

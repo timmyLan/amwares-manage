@@ -88,36 +88,38 @@ export default class ChildrenTable extends React.Component {
     return (
       <div>
         <AppBar
-        title='Children'
-        iconElementLeft={<span></span>}
-        iconElementRight={
-          <div>
-            <IconButton tooltip="Create" onTouchTap = {() => {
-              this.props.actions.infoOpen();
-              this.props.actions.changeTitle('Create');
-            }}>
-                  <FontIcon className="material-icons" color="#fff">
-                      add
-                  </FontIcon>
-            </IconButton>
-            <IconButton tooltip="Search" onTouchTap = {() => {
-              this.props.actions.searchOpen();
-            }}>
-                  <FontIcon className="material-icons" color="#fff">
-                      search
-                  </FontIcon>
-            </IconButton>
-            {
-              this.clearSearch()
-            }
-          </div>}
+          title='Children'
+          iconElementLeft={<span></span>}
+          iconElementRight={
+            <div>
+              <IconButton tooltip="Create" onTouchTap = {() => {
+                this.props.actions.infoOpen();
+                this.props.actions.changeTitle('Create');
+              }}>
+                    <FontIcon className="material-icons" color="#fff">
+                        add
+                    </FontIcon>
+              </IconButton>
+              <IconButton tooltip="Search" onTouchTap = {() => {
+                this.props.actions.searchOpen();
+              }}>
+                    <FontIcon className="material-icons" color="#fff">
+                        search
+                    </FontIcon>
+              </IconButton>
+              {
+                this.clearSearch()
+              }
+            </div>
+          }
         />
         <Table
-        height='600px'
-        fixedHeader={true}>
+          height='600px'
+          fixedHeader={true}>
             <TableHeader
-            displaySelectAll={false}
-            adjustForCheckbox={false}>
+              displaySelectAll={false}
+              adjustForCheckbox={false}
+            >
               <TableRow>
                   <TableHeaderColumn style={styles.tableColumn} tooltip="The ID">#</TableHeaderColumn>
                   <TableHeaderColumn style={styles.tableColumn} tooltip="The Name">Name</TableHeaderColumn>
@@ -126,10 +128,11 @@ export default class ChildrenTable extends React.Component {
               </TableRow>
             </TableHeader>
             <TableBody
-            showRowHover={true}
-            displayRowCheckbox={false}
-            stripedRows={true}>
-                {this.tableMap()}
+              showRowHover={true}
+              displayRowCheckbox={false}
+              stripedRows={true}
+            >
+              {this.tableMap()}
             </TableBody>
         </Table>
         {this.props.tableInfo.pages > 1 ? <ReactPaginate previousLabel={"previous"}

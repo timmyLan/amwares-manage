@@ -24,11 +24,11 @@ export default class Home extends React.Component {
   render() {
     return (
       <div style={styles.main_background}>
-                <div>
-                    <img src="./favicon.ico"/>
-                    <h1 style={styles.main_text}>Amwares-Manage</h1>
-                </div>
-            </div>
+          <div>
+            <img src="./favicon.ico"/>
+            <h1 style={styles.main_text}>Amwares-Manage</h1>
+          </div>
+      </div>
     )
   }
 }

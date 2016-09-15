@@ -21,8 +21,8 @@ class Children extends React.Component {
   render() {
     return (
       <div style={styles.container}>
-                <ChildrenTable {...this.props}/>
-            </div>
+          <ChildrenTable {...this.props}/>
+      </div>
       );
   }
 }

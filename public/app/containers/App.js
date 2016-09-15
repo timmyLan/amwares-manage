@@ -19,49 +19,42 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-                <Toolbar>
-                    <ToolbarGroup firstChild={true}>
-
-                        <FontIcon className="material-icons" style={styles.iconStyles}>
-                            <Link
-      style={styles.linkStyle} to="/">home
-                            </Link>
-                        </FontIcon>
-
-                    </ToolbarGroup>
-                    <ToolbarGroup>
-                        <ToolbarTitle text="Amwares"/>
-                        <ToolbarSeparator />
-                        <IconMenu
-      iconButtonElement={<IconButton>
-                                <FontIcon className="material-icons">
-                                    filter_list
-                                </FontIcon>
-                            </IconButton>}
-      anchorOrigin={{
-        horizontal: 'right',
-        vertical: 'top'
-      }}
-      targetOrigin={{
-        horizontal: 'right',
-        vertical: 'top'
-      }}
-      >
-                            <MenuItem primaryText={
-      <Link
-      style={styles.linkStyle} to="/">Home
-                                </Link>
-      } />
-                            <MenuItem primaryText={
-      <Link
-      style={styles.linkStyle} to="/children" >Children
-                                </Link>
-      } />
-                        </IconMenu>
-                    </ToolbarGroup>
-                </Toolbar>
-                {this.props.children}
-            </div>
-      );
+        <Toolbar>
+          <ToolbarGroup firstChild={true}>
+            <FontIcon className="material-icons" style={styles.iconStyles}>
+              <Link style={styles.linkStyle} to="/">home</Link>
+            </FontIcon>
+          </ToolbarGroup>
+          <ToolbarGroup>
+            <ToolbarTitle text="Amwares"/>
+            <ToolbarSeparator />
+            <IconMenu
+              iconButtonElement={
+                <IconButton>
+                    <FontIcon className="material-icons">
+                        filter_list
+                    </FontIcon>
+                </IconButton>
+              }
+              anchorOrigin={{
+                horizontal: 'right',
+                vertical: 'top'
+              }}
+              targetOrigin={{
+                horizontal: 'right',
+                vertical: 'top'
+              }}
+            >
+            <MenuItem primaryText={
+              <Link style={styles.linkStyle} to="/">Home</Link>
+            }/>
+            <MenuItem primaryText={<Link style={styles.linkStyle} to="/children" >Children</Link>
+            }/>
+          </IconMenu>
+        </ToolbarGroup>
+      </Toolbar>
+          {this.props.children}
+    </div>
+    );
   }
 }
