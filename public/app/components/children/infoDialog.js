@@ -16,7 +16,7 @@ export default class InfoDialog extends React.Component {
   handleClose(){
     this.props.actions.infoClose()
   }
-  createChild(){
+  operationChild(){
     const formData = new FormData(document.getElementById('childrenInfoForm'));
     let data = {};
     for (const [key, value] of formData.entries()) {
@@ -48,7 +48,7 @@ export default class InfoDialog extends React.Component {
         >
         <Formsy.Form
           id="childrenInfoForm"
-          onValidSubmit={()=>this.createChild()}
+          onValidSubmit={()=>this.operationChild()}
         >
           <FormsyText
             name="name"
